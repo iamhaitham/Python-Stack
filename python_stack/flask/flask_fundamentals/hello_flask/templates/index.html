@@ -1,0 +1,22 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <title>My server</title>
+    <meta name="description" content="This is my first server importing an HTML">
+</head>
+
+<body>
+    <h1>My Flask Template</h1>
+    <p>Phrase:{{phrase}}</p>
+    <p>Times:{{times}}</p>
+
+    {% for x in range(0,times,1): %}
+    <p>{{phrase}}</p>
+    {% endfor %} {% if phrase=="hello": %}
+    <p>The phrase says hello</p>
+    {% endif %}
+</body>
+
+</html>
