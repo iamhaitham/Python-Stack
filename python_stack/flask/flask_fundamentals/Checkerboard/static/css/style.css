@@ -1,0 +1,15 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    outline: 0px;
+}
+
+.block {
+    width: 40px;
+    height: 40px;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+}
