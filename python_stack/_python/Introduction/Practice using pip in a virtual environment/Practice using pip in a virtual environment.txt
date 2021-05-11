@@ -1,0 +1,59 @@
+	pip list
+
+It shows the frameworks installed on a virtual environment.
+_____________________
+	deactivate
+
+Deactivation of the virtual environment 
+_____________________
+	pip list 
+	pip3 list 
+
+Both gave me the same output
+_____________________
+	call myEnvironments/py3Env/Scripts/activate
+
+the envirnoment is re-activated after the directory's name was changed
+_____________________
+	pip install Django==2.2.4
+
+Collecting Django==2.2.4
+  Downloading Django-2.2.4-py3-none-any.whl (7.5 MB)
+     |████████████████████████████████| 7.5 MB 97 kB/s
+Collecting pytz
+  Downloading pytz-2021.1-py2.py3-none-any.whl (510 kB)
+     |████████████████████████████████| 510 kB 117 kB/s
+Collecting sqlparse
+  Downloading sqlparse-0.4.1-py3-none-any.whl (42 kB)
+     |████████████████████████████████| 42 kB 85 kB/s
+Installing collected packages: sqlparse, pytz, Django
+Successfully installed Django-2.2.4 pytz-2021.1 sqlparse-0.4.1
+_____________________
+	pip freeze
+
+pip freeze output is not sorted in a table, and is as follows:
+Django==2.2.4
+pytz==2021.1
+sqlparse==0.4.1
+
+While pip list output is sorted in a table as follows:
+Package    Version
+---------- -------
+Django     2.2.4
+pip        21.1.1
+pytz       2021.1
+setuptools 28.8.0
+sqlparse   0.4.1
+_____________________
+	pip freeze > requirements.txt
+
+Shows the versions of the installed environments in a text file that will be created 
+on the directory you are in (in this case it was the desktop)
+_____________________
+	pip uninstall Django
+
+This command will uninstall Django environment
+_____________________
+	pip show Django
+
+This command checks Django Environment version
