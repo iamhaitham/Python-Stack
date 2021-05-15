@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Dojo Survey Index</title>
+    <meta name="description" content="Solving Dojo Survey Assignment">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styleResult.css')}}" </head>
+
+    <body>
+        <div class="container">
+            <p id="specialP">Submitted info</p>
+            <div>
+                <div class="rows">
+                    <p>Name:</p>
+                    <p>{{x}}</p>
+                </div>
+                <div class="rows">
+                    <p>Dojo Location:</p>
+                    <p>{{y}}</p>
+                </div>
+                <div class="rows">
+                    <p>Favourite Language:</p>
+                    <p>{{z}}</p>
+                </div>
+                <div class="rows">
+                    <p>Comment:</p>
+                    <p>{{xx}}</p>
+                </div>
+            </div>
+            <form action="/">
+                <input type="submit" value="Go Back">
+            </form>
+        </div>
+    </body>
+
+</html>
