@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css')}}">
+</head>
+
+<body>
+    <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+                <h5 class="text-white h4">Collapsed content</h5>
+                <span class="text-muted">Toggleable via the navbar brand.</span>
+            </div>
+        </div>
+        <nav class="navbar navbar-dark bg-info">
+            <a class="navbar-brand" href="#">
+                <img src="{{url_for('static',filename='img/bootstrap.png')}}" width="30" height="30" class="d-inline-block align-top" alt="Logo"> Dojo Fruit Store
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </nav>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-7 text-center">Thank you for your order!</h1>
+            <p class="lead text-center">Your {{sum}} orders have been successfully added on {{TODAY}}
+            </p>
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid" style="background-color:#f8f9fa" id="what_to_buy_form">
+        <div class="container">
+            <h4 class="display-7">You have ordered</h4>
+            <table class="table table-striped ">
+                <thead>
+                    <th>Fruit Name</th>
+                    <th>Quantity</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Strawberry</td>
+                        <td>{{strawberry}}</td>
+                    </tr>
+                    <tr>
+                        <td>Raspberry</td>
+                        <td>{{raspberry}}</td>
+                    </tr>
+                    <tr>
+                        <td>Apple</td>
+                        <td>{{apple}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4 class="display-7">Your Information</h4>
+            <form>
+                <div style="display:flex; flex-direction:row;">
+                    <div class="mb-3 form-check">
+                        First Name: {{first_name}}
+                    </div>
+                    <div class="mb-3 form-check" style="margin-left:20px;">
+                        Last Name:{{last_name}}
+                    </div>
+                </div>
+                <div class="mb-3 form-check">
+                    Your Student ID (Optional): {{student_id}}
+                </div>
+            </form>
+            <form action="/">
+                <input type="submit" class="btn btn-danger" value="Go back">
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Solving Dojo Fruit Store Assignment">
+    <title>Dojo Fruit Store</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css')}}">
+</head>
+
+<body>
+    <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+                <h5 class="text-white h4">Collapsed content</h5>
+                <span class="text-muted">Toggleable via the navbar brand.</span>
+            </div>
+        </div>
+        <nav class="navbar navbar-dark bg-info">
+            <a class="navbar-brand" href="#">
+                <img src="{{url_for('static',filename='img/bootstrap.png')}}" width="30" height="30" class="d-inline-block align-top" alt="Logo"> Dojo Fruit Store
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </nav>
+    </div>
+
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4 text-center">Dojo Fruit Store!</h1>
+            <p class="lead text-center">Your dojo decided to buy fruits for all the students! Please use this app to tell us what you would like to have! Once we get your order, we'll charge your student account automatically.
+            </p>
+            <div class="d-grid gap-2 col-6" style="margin-left:350px;">
+                <a class="btn btn-dark btn-lg" href="#what_to_buy_form" role="button">Order fruits from the store</a>
+                <a class="btn btn-info btn-lg" href="Fruits.html" role="button">See fruits</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="jumbotron jumbotron-fluid" style="background-color:#f8f9fa" id="what_to_buy_form">
+        <div class="container">
+            <h4 class="display-7">What would you like to buy?</h4>
+            <form action="/checkout" method="post">
+                <table class="table table-striped ">
+                    <thead>
+                        <th>Fruit Name</th>
+                        <th>Quantity</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Strawberry</td>
+                            <td><select name="strawberry">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                </select></td>
+                        </tr>
+                        <tr>
+                            <td>Raspberry</td>
+                            <td><select name="raspberry">
+                                <option>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                </select></td>
+                        </tr>
+                        <tr>
+                            <td>Apple</td>
+                            <td><select name="apple">
+                                <option>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                </select></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4 class="display-7">Your Information</h4>
+
+                <div style="display:flex; flex-direction:row;">
+                    <div class="mb-3 form-check">
+                        First Name:
+                        <input type="text" name="first_name" class="form-control form-group" style="width:500px;margin-top:5px;">
+                    </div>
+                    <div class="mb-3 form-check" style="margin-left:20px;">
+                        Last Name:<input type="text" name="last_name" class="form-control form-group" style="width:550px;margin-top:5px;">
+                    </div>
+                </div>
+                <div class="mb-3 form-check">
+                    Your Student ID (Optional)
+                    <input type="text" name="student_id" class="form-control form-group" style="margin-top:5px;">
+                </div>
+                <input type="submit" class="btn btn-success btn-block" value="Checkout" style="margin-top:5px;">
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
