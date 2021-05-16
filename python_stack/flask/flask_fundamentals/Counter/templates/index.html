@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Solving Counter Assignment">
+    <title>Counter Assignment</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css')}}" </head>
+
+    <body>
+        <h1 class="text-center">Counter</h1>
+        <p class="text-center">{{counter}} times</p>
+        <div style="display:flex;flex-direction:row;justify-content:center">
+            <form action="/incrementByTwo" method="post">
+                <input type="submit" value="Increment By 2" class="btn btn-success" style="margin-right:10px;">
+            </form>
+            <form action="/destroy_session" method="post">
+                <input type="submit" value="Reset" class="btn btn-danger" style="margin-right:10px;">
+            </form>
+            <form style="display:flex;flex-direction:row; width:300px" action="/customizedIncrement" method="post">
+                <input type="text" class="form-control" style="margin-right:10px;" name="number">
+                <input type="submit" value="Increment By this!" class="form-control btn btn-info">
+            </form>
+        </div>
+
+        <h1 class="text-center" style="margin-top:45px;">Actual Counter</h1>
+        <p class="text-center">{{actual_counter}}</p>
+
+
+
+
+    </body>
+
+</html>
