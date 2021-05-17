@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <style>
+        .results {
+            background-color: #f3f8ff;
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .container2 {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h4 class="display-7 " style="text-align:center; ">Submitted info:</h4>
+        </div>
+    </div>
+
+
+    <div class=" container2 ">
+        <div class=" results ">
+            <p>Your Name: </p>
+            <p>{{name}}</p>
+        </div>
+        <div class=" results ">
+            <p>Dojo Location: </p>
+            <p>{{location}}</p>
+        </div>
+
+        <div class=" results ">
+            <p>Favourite Language: </p>
+            <p>{{language}}</p>
+        </div>
+
+        <div class=" results ">
+            <p>Comment (Optional): </p>
+            <p>{{textarea}}</p>
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>
