@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Solving Great Number Game">
+    <title>Great Number Game</title>
+    <style>
+        body {
+            margin-left: 500px;
+        }
+        
+        .box {
+            color: white;
+            font-weight: 700;
+            width: 200px;
+            padding: 20px;
+            border: 2px solid black;
+            margin: 2%;
+            font-size: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .low,
+        .high {
+            background-color: red;
+        }
+        
+        .won {
+            background-color: rgb(26, 180, 26);
+        }
+        
+        .hiddenDIV {
+            display: none;
+            border: none;
+        }
+        
+        .hiddenFORM {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to the Great Number Game</h1>
+    <p>I am thinking of a number between 1 and 100</p>
+    <p>Take a guess!</p>
+    <div class="box {{request.session.style}}">
+        <p>{{request.session.content}}</p>
+        <p>{{request.session.attempts}}</p>
+        <form action="/again" method="post">
+            {%csrf_token%}
+            <input type="{{request.session.again}}" value="Play again!">
+        </form>
+    </div>
+    <form method="post" action="/check">
+        {%csrf_token%}
+        <input type="text" name="userNumber">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
