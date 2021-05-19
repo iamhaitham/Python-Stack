@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Solving Ninja Gold Assignmenr">
+    <title>Ninja Gold Assignmenr</title>
+    <style>
+        #heading {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+        }
+        
+        .ROW {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .borderedDiv {
+            border: 2px solid black;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #div3 {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .borderedDiv2 {
+            border: 2px solid black;
+            padding: 5px;
+        }
+        
+        #textarea {
+            overflow: scroll;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Heading that displays your gold -->
+    <div id="heading">
+        <p>Your Gold:</p>
+        <div class="borderedDiv2">{{request.session.gold}}</div>
+    </div>
+
+    <!-- Places to go and earn gold -->
+    <div class="ROW">
+        <div class="borderedDiv">
+            <h2>Farm</h2>
+            <p>(earns 10-20 golds)</p>
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="hiddenInput" value="Farm">
+                <input type="submit" value="Find Gold!">
+            </form>
+        </div>
+        <div class="borderedDiv">
+            <h2>Cave</h2>
+            <p>(earns 5-10 golds)</p>
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="hiddenInput" value="Cave">
+                <input type="submit" value="Find Gold!">
+            </form>
+        </div>
+        <div class="borderedDiv">
+            <h2>House</h2>
+            <p>(earns 2-5 golds)</p>
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="hiddenInput" value="House">
+                <input type="submit" value="Find Gold!">
+            </form>
+        </div>
+        <div class="borderedDiv">
+            <h2>Mall</h2>
+            <p>(earns/takes 0-50 golds)</p>
+            <form action="/process_money" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="hiddenInput" value="Mall">
+                <input type="submit" value="Find Gold!">
+            </form>
+        </div>
+    </div>
+
+    <!-- Displaying ninja's activity -->
+    <div id="div3">
+        <h2>Activities</h2>
+        <div class="borderedDiv2" id="textarea">
+            {% for activity in request.session.activity %}
+            <div>{{activity}}</div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+</body>
+
+</html>
