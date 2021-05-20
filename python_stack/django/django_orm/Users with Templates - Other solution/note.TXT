@@ -1,0 +1,2 @@
+This is a solution that does not use sessions.
+I created the solution at first for testing so I ended up naming it as test and test_app
