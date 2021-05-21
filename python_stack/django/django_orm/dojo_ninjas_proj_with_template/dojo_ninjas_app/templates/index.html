@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Solving Dojos & Ninjas with Template Assignment">
+    <title>Dojos & Ninjas with Template</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <style>
+        #formsInRow {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        
+        #formsInRow>form {
+            margin: 1% 12%;
+        }
+        
+        #myDB {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Forms part of the website -->
+    <div id="formsInRow">
+        <!-- Dojo form -->
+        <form method="post" action="/Dojo">
+            <h1>Add A Dojo</h1>
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="dojo_name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="dojo_name" name="name">
+            </div>
+            <div class="mb-3">
+                <label for="dojo_city" class="form-label">City</label>
+                <input type="text" class="form-control" id="dojo_city" name="city">
+            </div>
+            <div class="mb-3">
+                <label for="dojo_state" class="form-label">State</label>
+                <input type="text" class="form-control" id="dojo_state" name="state">
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+        <!-- Ninja form -->
+        <form method="post" action="/Ninja">
+            <h1>Add A Ninja</h1>
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="first_name" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="first_name" name="first_name">
+            </div>
+            <div class="mb-3">
+                <label for="last_name" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="last_name" name="last_name">
+            </div>
+            <div class="mb-3">
+                <label for="select_dojo" class="form-label">Dojo</label>
+                <select type="select" class="form-control" id="select_dojo" name="select_dojo">
+                    {%for dojo in All_Dojos%}
+                        <option>{{dojo.name}}</option>
+                    {%endfor%}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+    </div>
+    <hr>
+    <!-- Database contents part of the website -->
+    <div id="myDB">
+        <h1>All the Dojos</h1>
+        {% for dojo in All_Dojos %}
+        <p>Ninjas at the {{dojo.name}}</p>
+        {% for ninja in dojo.ninjas.all %}
+        <li>{{ninja.first_name}} {{ninja.last_name}}</li>
+        {%endfor%} {%endfor%}
+    </div>
+</body>
+
+</html>
