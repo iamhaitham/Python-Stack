@@ -28,3 +28,11 @@ def Ninja(request):
         return redirect("/")
     else:
         return HttpResponse("You are not allowed to change the route manually!")
+
+def Delete(request):
+    if request.method=="POST":
+        ID=request.POST["deleteButton"]
+        models.Delete(ID)
+        return redirect("/")
+    else:
+        return HttpResponse("You are not allowed to change the route manually!")

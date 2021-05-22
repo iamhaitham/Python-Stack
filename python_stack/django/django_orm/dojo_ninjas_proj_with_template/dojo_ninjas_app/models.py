@@ -22,3 +22,6 @@ def add_dojo(dojo_name,dojo_city,dojo_state):
 
 def add_ninja(ninja_select_dojo,ninja_first_name,ninja_last_name):
     Ninja.objects.create(dojo=Dojo.objects.get(name=ninja_select_dojo),first_name=ninja_first_name,last_name=ninja_last_name)
+
+def Delete(ID):
+    Dojo.objects.get(id=ID).delete()

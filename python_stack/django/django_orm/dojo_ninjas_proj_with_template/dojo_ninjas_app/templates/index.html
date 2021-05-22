@@ -27,6 +27,15 @@
             align-items: center;
             align-content: center;
         }
+        
+        #infoAndDelete {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        #DELETEBUTTON {
+            margin-left: 10px;
+        }
     </style>
 </head>
 
@@ -79,7 +88,13 @@
     <div id="myDB">
         <h1>All the Dojos</h1>
         {% for dojo in All_Dojos %}
-        <p>Ninjas at the {{dojo.name}}</p>
+        <div id="infoAndDelete">
+            <p>Ninjas at the {{dojo.name}}</p>
+            <form action="/Delete" method="post">
+                {% csrf_token %}
+                <button id="DELETEBUTTON" class="btn btn-danger" name="deleteButton" value="{{dojo.id}}">DELETE</button>
+            </form>
+        </div>
         {% for ninja in dojo.ninjas.all %}
         <li>{{ninja.first_name}} {{ninja.last_name}}</li>
         {%endfor%} {%endfor%}
