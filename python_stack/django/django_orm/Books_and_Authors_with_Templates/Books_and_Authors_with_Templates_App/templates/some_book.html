@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Information about a specific book">
+    <title>{{Some_Book.title}}</title>
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'css/bootstrap.css'%}">
+    <style>
+        .formInRow {
+            display: flex;
+            flex-direction: row;
+            margin-top: 2%;
+        }
+        
+        .formInRow>select {
+            margin-right: 2%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>{{Some_Book.title}}</h1>
+    <p>ID: {{Some_Book.id}}</p>
+    <p>Description: {{Some_Book.desc}}</p>
+    <div>Authors: {%for x in Some_Book.authors.all%}
+        <li>{{x.first_name}} {{x.last_name}}</li>
+        {%endfor%}
+    </div>
+    <form action="/some_book" method="POST" class="formInRow">
+        {% csrf_token %}
+        <select class="form-select" name="assigned_author"> 
+            <option selected>--Select an author--</option>
+            {% for author in All_Authors %}
+            <option value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
+            {% endfor %}
+        </select>
+        <input type="hidden" value="{{Some_Book.id}}" name="book_id">
+        <input value="Add" type="submit" class="btn btn-success">
+    </form>
+</body>
+
+</html>

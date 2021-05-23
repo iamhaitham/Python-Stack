@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="authors page">
+    <title>Authors</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/Bootstrap.css' %}">
+    <style>
+        #container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin-top: 1%;
+        }
+        
+        a:visited,
+        a:hover,
+        a:link {
+            color: #ffc107;
+            text-decoration: none;
+        }
+        
+        .addButton {
+            margin-top: 3%;
+        }
+        
+        form {
+            width: 25%;
+        }
+        
+        .indexPageTable {
+            width: 25%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <form action="/add_author" method="post">
+            <h1>Add an author</h1>
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="first_name" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="first_name" name="first_name">
+            </div>
+            <div class="mb-3">
+                <label for="last_name" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="last_name" name="last_name">
+            </div>
+            <label for="author_notes" class="form-label">Notes</label>
+            <textarea class="form-control" rows="3" id="author_notes" name="author_notes"></textarea>
+            <button type="submit" class="btn btn-warning addButton">Add</button>
+        </form>
+
+        <table class="table table-dark table-striped indexPageTable">
+            <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                {% for author in All_Authors %}
+                <tr>
+                    <td>{{author.first_name}}</td>
+                    <td>{{author.last_name}}</td>
+                    <td><a href="author/{{author.id}}">View</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</body>
+
+</html>
