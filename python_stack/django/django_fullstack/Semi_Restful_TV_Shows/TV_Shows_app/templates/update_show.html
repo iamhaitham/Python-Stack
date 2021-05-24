@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'css/bootstrap.css'%}">
+    <style>
+        body {
+            width: 50%;
+            margin-left: 25%;
+        }
+        
+        #inputsInRow {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        #inputsInRow>div {
+            margin-right: 5%;
+        }
+        
+        button {
+            margin-top: 4%;
+        }
+        
+        #heading {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        
+        #heading>a {
+            margin-top: 2%;
+        }
+        
+        form>button {
+            margin-bottom: 2%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="heading">
+        <h1>Edit Show {{Some_Show.id}}</h1> <a href="/shows">Go back</a>
+    </div>
+    <form method="post" action="/update">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="show_title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="show_title" name="show_title">
+        </div>
+        <div id="inputsInRow">
+            <div class="mb-3">
+                <label for="show_network" class="form-label">Network</label>
+                <input type="text" class="form-control" id="show_network" name="show_network">
+            </div>
+            <div class="mb-3">
+                <label for="show_release_date" class="form-label">Release Date</label>
+                <input type="date" class="form-control" id="show_release_date" name="show_release_date">
+            </div>
+        </div>
+        <label for="show_description" class="form-label">Description</label>
+        <textarea class="form-control" rows="3" id="show_description" name="show_description"></textarea>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <input type="hidden" value={{Some_Show.id}} name="show_id_grabber">
+    </form>
+    <a href="/shows/{{NUM}}">Go to show</a>
+</body>
+
+</html>

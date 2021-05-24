@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{Some_Show.id}}</title>
+    <style>
+        body {
+            margin-left: 40%;
+        }
+        
+        #linksInRow {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        #heading {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        #heading>a {
+            margin-top: 2%;
+            margin-left: 10%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="heading">
+        <h1>TV Show {{Some_Show.id}}</h1>
+        <a href="/shows">Go Back</a>
+    </div>
+    <p>Title: {{Some_Show.title}}</p>
+    <p>Network: {{Some_Show.network}}</p>
+    <p>Release Date: {{Some_Show.release_date}}</p>
+    <p>Description: {{Some_Show.description}}</p>
+    <p>Last Updated: {{Some_Show.updated_at}}</p>
+    <div id="linksInRow">
+        <a href="{{NUM}}/edit">Edit</a> | <a href="{{Some_Show.id}}/delete">Delete</a>
+    </div>
+</body>
+
+</html>
