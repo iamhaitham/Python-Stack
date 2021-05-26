@@ -44,3 +44,4 @@ def update(show_id,show_title,show_network,show_release_date,show_description):
 def delete(show_id):
     show=Show.objects.get(id=show_id)
     show.delete()
+
