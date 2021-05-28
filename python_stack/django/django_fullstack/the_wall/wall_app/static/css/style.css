@@ -1,0 +1,41 @@
+#heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+}
+
+#heading2 {
+    display: flex;
+    flex-direction: row;
+}
+
+#heading2>a {
+    margin-left: 50px;
+}
+
+form {
+    width: 50%;
+    margin-top: 1%;
+}
+
+form label,
+form div {
+    margin-bottom: 2%;
+}
+
+#messageContainer {
+    margin: 2%;
+}
+
+.post-content {
+    color: sienna;
+    margin: 10px 20px;
+    padding: 8px;
+}
+
+.post-comment {
+    color: darkmagenta;
+    margin: 10px 30px;
+    padding: 8px;
+}
