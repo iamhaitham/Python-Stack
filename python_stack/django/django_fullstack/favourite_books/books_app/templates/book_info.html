@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Info</title>
+    {% load static %}
+    <link href="{% static 'css/Bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style3.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div id="heading">
+        <p>Welcome, {{request.session.FIRSTNAME}}</p>
+        <a href="{% url 'login_registration_app:logout' %}" class="btn btn-danger">Log Out</a>
+    </div>
+
+    {% if request.session.id is not A_Book.uploaded_by.id %}
+    <div class="info">
+        <div>
+            <h1>{{A_Book.title}}</h1>
+            <p>Added By: {{A_Book.uploaded_by.first_name}} {{A_Book.uploaded_by.last_name}}</p>
+            <p>Added on: {{A_Book.created_at}}</p>
+            <p>Last updated on: {{A_Book.updated_at}}</p>
+            <p>Description: {{A_Book.description}}</p>
+        </div>
+        {% else %}
+        <div class="info">
+            <div>
+                <div class="errorMessages">
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                            {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                <form method="post" action="update_book/{{A_Book.id}}">
+                    {% csrf_token %}
+                    <input type="text" placeholder="{{A_Book.title}}" name="book_title" required>
+                    <p>Added By: {{A_Book.uploaded_by.first_name}} {{A_Book.uploaded_by.last_name}}</p>
+                    <p>Added on: {{A_Book.created_at}}</p>
+                    <p>Last updated on: {{A_Book.updated_at}}</p>
+                    <textarea placeholder="Description: {{A_Book.description}}" name="book_description"></textarea>
+                    <br>
+                    <input type="submit" class="btn btn-dark" value="Update">
+                    <a class="btn btn-danger" href="delete/{{A_Book.id}}">Delete</a>
+                </form>
+
+            </div>
+            {% endif %}
+            <div>
+                <h1>Users who like this book:</h1>
+                {% for user in A_Book.favourites.all %}
+                <ul>
+                    <li>{{user.first_name}} {{user.last_name}}</li>
+                </ul>
+                {% endfor %} {% if A_Book not in fav_books %}
+                <a href="favourite_this/{{A_Book.id}}" class="btn btn-success">Add to favourite</a> {% else %}
+                <a href="unfavourite_this/{{A_Book.id}}" class="btn btn-warning">Un-favourite this book</a> {% endif %}
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

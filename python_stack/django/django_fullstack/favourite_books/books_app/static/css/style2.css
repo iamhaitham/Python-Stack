@@ -1,0 +1,37 @@
+#heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 2% 0%;
+}
+
+#wholePage {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#addBookForm {
+    width: 50%;
+}
+
+#uploadedBy {
+    margin-bottom: 5px;
+}
+
+#favouriteBook {
+    color: red;
+}
+
+#addBookButton {
+    margin-top: 5px;
+}
+
+#myFavouriteBooks {
+    display: flex;
+    flex-direction: column;
+}
+
+.errorMessages {
+    color: saddlebrown;
+}

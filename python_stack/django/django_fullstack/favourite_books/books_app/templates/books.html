@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Books homepage">
+    <title>Books</title>
+    {% load static %}
+    <link href="{% static 'css/Bootstrap.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+
+<body>
+    <!-- Heading -->
+    <div id="heading">
+        <p>Welcome, {{request.session.FIRSTNAME}}</p>
+        <a href="{% url 'login_registration_app:logout' %}" class="btn btn-danger">Log Out</a>
+    </div>
+
+    <div id="wholePage">
+        <!-- Add books -->
+        <div>
+            <h1>Add a favourite book</h1>
+            <div class="errorMessages">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <form method="post" action="{% url 'books_app:books_add' %}" id="addBookForm">
+                {% csrf_token %}
+                <label for="book_title">Title</label>
+                <input type="text" class="form-control" id="book_title" name="book_title" required>
+
+                <label for="book_description">Description</label>
+                <textarea rows="3" class="form-control" id="book_description" name="book_description"></textarea>
+
+                <button type="submit" class="btn btn-primary" id="addBookButton">Add</button>
+            </form>
+        </div>
+        <!-- Display books -->
+        <div>
+            <h1>All Books</h1>
+            {% for book in All_Books %}
+            <div id="myFavouriteBooks">
+                <a href="/books/{{book.id}}">{{book.title}}</a>
+                <p id="uploadedBy">added by {{book.uploaded_by.first_name}} {{book.uploaded_by.last_name}}</p>
+                {% if book in fav_books %}
+                <p id="favouriteBook">this book is one of your favourites</p>
+                {% else %}
+                <a href="favourite_this/{{book.id}}" class="btn btn-info ">Add to favourites</a> {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</body>
+
+</html>

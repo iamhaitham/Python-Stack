@@ -1,0 +1,24 @@
+body {
+    margin: 0% 10%;
+}
+
+#heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.info {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.info>div {
+    margin-right: 15%;
+}
+
+.errorMessages {
+    color: saddlebrown;
+}
